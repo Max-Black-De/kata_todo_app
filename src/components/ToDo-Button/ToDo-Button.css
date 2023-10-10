@@ -31,9 +31,15 @@ button {
     border: 1px solid transparent;
     border-radius: 3px;
 }
+.filters li:hover button {
+	border-color: rgba(175, 47, 47, 0.1);
+}
 .clear-completed, html .clear-completed:active {
     position: relative;
     line-height: 20px;
     text-decoration: none;
     cursor: pointer;
+}
+.clear-completed:hover {
+	text-decoration: underline;
 }

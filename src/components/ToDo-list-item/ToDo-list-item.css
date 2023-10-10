@@ -107,3 +107,6 @@
 .todo-list li .icon-destroy:after {
     content: '×';
 }
+.todo-list li .icon:hover {
+	color: #af5b5e;
+}
