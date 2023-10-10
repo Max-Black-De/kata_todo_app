@@ -5,7 +5,7 @@ import TodoMainSection from '../ToDo-main-section';
 
 import './App.css';
 
-const App = () => {
+const App = (props) => {
     return (
         <section className="todoapp">
             <ToDoHeader />

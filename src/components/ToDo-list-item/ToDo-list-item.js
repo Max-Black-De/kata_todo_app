@@ -13,7 +13,7 @@ const TodoListItem = ({className}) => {
                 <TodoButtons className="icon icon-edit"/>
                 <TodoButtons className="icon icon-destroy"/>
             </div>
-            <input type="text" className="edit" value="Editing task"/>
+            <input type="text" className="edit" placeholder="Editing task"/>
         </li>
     )
 };

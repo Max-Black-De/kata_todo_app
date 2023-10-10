@@ -1,12 +1,13 @@
 import React from "react";
 
+import NewTaskForm from "../NewTaskForm";
 import "./ToDo-header.css"
 
-const TodoHeader = () => {
+const TodoHeader = (props) => {
     return (
         <header className="header">
             <h1>todos</h1>
-            <input className="new-todo" placeholder="What needs to be done?" autoFocus />
+            <NewTaskForm className="new-todo" placeholder="What needs to be done?" autoFocus />
         </header>
     )
 }
