@@ -1,9 +1,9 @@
 import React from "react";
 
-import TodoFilterList from "../ToDo-filter-list";
-import TodoButton from "../ToDo-Button";
+import TodoFilterList from "../todo-filter-list";
+import TodoButton from "../todo-button";
 
-import "./ToDo-footer.css"
+import "./todo-footer.css"
 
 function TodoFooter(props) { 
     return (

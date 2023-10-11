@@ -1,7 +1,7 @@
 import React from "react";
 
-import ToDoHeader from '../ToDo-header';
-import TodoMainSection from '../ToDo-main-section';
+import ToDoHeader from '../todo-header';
+import TodoMainSection from '../todo-main-section';
 
 import './App.css';
 

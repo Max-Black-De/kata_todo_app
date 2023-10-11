@@ -1,9 +1,9 @@
 import React from "react";
 
-import TodoList from "../ToDo-list";
-import TodoFooter from "../ToDo-footer";
+import TodoList from "../todo-task-list";
+import TodoFooter from "../todo-footer";
 
-import "./ToDo-main-section.css"
+import "./todo-main-section.css"
 
 function TodoMainSection(props) {
 

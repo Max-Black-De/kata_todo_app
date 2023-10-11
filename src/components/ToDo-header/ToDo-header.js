@@ -1,7 +1,7 @@
 import React from "react";
 
-import NewTaskForm from "../NewTaskForm";
-import "./ToDo-header.css"
+import NewTaskForm from "../new-task-form";
+import "./todo-header.css"
 
 const TodoHeader = ({headerClass, newTaskClass, placeholder}) => {
     return (

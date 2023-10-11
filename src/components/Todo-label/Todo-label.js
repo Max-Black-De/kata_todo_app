@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "./Todo-label.css"
+import "./todo-label.css"
 
 function TodoLabel(props) {
 

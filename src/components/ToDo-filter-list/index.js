@@ -1,3 +1,3 @@
-import TodoFilterList from './ToDo-filter-list';
+import TodoFilterList from './todo-filter-list';
 
 export default TodoFilterList;

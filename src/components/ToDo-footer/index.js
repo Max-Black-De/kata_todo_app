@@ -1,3 +1,3 @@
-import ToDoFooter from "./ToDo-footer";
+import ToDoFooter from "./todo-footer";
 
 export default ToDoFooter;

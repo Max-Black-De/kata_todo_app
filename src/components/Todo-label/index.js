@@ -1,3 +1,3 @@
-import TodoLabel from "./Todo-label.js"
+import TodoLabel from "./todo-label"
 
 export default TodoLabel;

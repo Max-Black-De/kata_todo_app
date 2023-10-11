@@ -1,3 +1,3 @@
-import ToDoHeader from './ToDo-header';
+import ToDoHeader from './todo-header';
 
 export default ToDoHeader;

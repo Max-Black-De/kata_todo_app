@@ -1,3 +1,3 @@
-import TodoButton from "./ToDo-Button";
+import TodoButton from "./todo-button";
 
 export default TodoButton;

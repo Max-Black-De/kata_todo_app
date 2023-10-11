@@ -1,8 +1,8 @@
 import React from 'react';
-import TodoButtons from "../ToDo-Button";
-import TodoLabel from '../Todo-label';
+import TodoButtons from "../todo-button";
+import TodoLabel from '../todo-label';
 
-import './ToDo-list-item.css'
+import './todo-list-item.css'
 
 const TodoListItem = (props) => {
     const button = props.todoListButtonProps.map(buttonData => {

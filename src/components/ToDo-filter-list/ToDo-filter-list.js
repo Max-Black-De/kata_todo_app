@@ -1,7 +1,7 @@
 import React from "react";
 
-import TodoButton from "../ToDo-Button";
-import "./ToDo-filter-list.css"
+import TodoButton from "../todo-button";
+import "./todo-filter-list.css"
 
 
 
