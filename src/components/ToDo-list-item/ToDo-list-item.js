@@ -4,14 +4,19 @@ import TodoLabel from '../Todo-label';
 
 import './ToDo-list-item.css'
 
-const TodoListItem = ({className}) => {
+const TodoListItem = (props) => {
+    const button = props.todoListButtonProps.map(buttonData => {
+        const { id, className } = buttonData;
+        return(
+            <TodoButtons key={id} className={className}/>
+        )
+    });
     return (
-        <li className={className}>
+        <li className={props.className}>
             <div className="view">
                 <input type="checkbox" className="toggle"/>
-                <TodoLabel />
-                <TodoButtons className="icon icon-edit"/>
-                <TodoButtons className="icon icon-destroy"/>
+                <TodoLabel todoListSpanProps={props.todoListSpanProps}/>
+                { button }
             </div>
             <input type="text" className="edit" placeholder="Editing task"/>
         </li>

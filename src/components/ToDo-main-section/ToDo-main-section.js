@@ -5,11 +5,20 @@ import TodoFooter from "../ToDo-footer";
 
 import "./ToDo-main-section.css"
 
-function TodoMainSection() {
+function TodoMainSection(props) {
+
     return(
-        <section className="main">
-            <TodoList />
-            <TodoFooter className="footer"/>
+        <section className={ props.mainSectionClass }>
+            <TodoList
+                itemsData={props.itemsData}
+                listClassName={props.todoListClass}
+                todoListSpanProps={props.todoListSpanProps}
+                todoListButtonProps={props.todoListButtonProps}/>
+            <TodoFooter
+                className={props.todoFooterClass}
+                filterButtonProps={props.filterButtonProps}
+                footerButtonProps={props.footerButtonProps}
+                filterListClassName={props.filterListClassName}/>
         </section>
     )
 };

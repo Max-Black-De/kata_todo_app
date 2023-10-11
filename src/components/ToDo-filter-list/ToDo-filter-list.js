@@ -3,18 +3,22 @@ import React from "react";
 import TodoButton from "../ToDo-Button";
 import "./ToDo-filter-list.css"
 
-function TodoFilterList(props) {
+
+
+function TodoFilterList({className, filterButtonProps}) {
+
+    const liItem = filterButtonProps.map(prop => {
+        const { id, ...otherProps} = prop;
+        return (
+            <li key={id}>
+                <TodoButton {...otherProps} />
+            </li>
+        )
+    });
+
     return (
-        <ul className="filters">
-            <li>
-                <TodoButton label="All" className="selected" />
-            </li>
-            <li>
-                <TodoButton label="Active" className="active" />
-            </li>
-            <li>
-                <TodoButton label="Completed" className="completed" />
-            </li>
+        <ul className={className}>
+            { liItem }
         </ul>
     )
 };

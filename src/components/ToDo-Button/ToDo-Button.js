@@ -2,8 +2,8 @@ import React from "react";
 
 import "./ToDo-Button.css"
 
-function TodoButton({label, className}) {
-    return <button className={className} > { label } </button>;
+function TodoButton(props) {
+    return <button key={props.id} className={props.className} > { props.label } </button>;
 };
 
 export default TodoButton;

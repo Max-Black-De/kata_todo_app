@@ -3,11 +3,11 @@ import React from "react";
 import NewTaskForm from "../NewTaskForm";
 import "./ToDo-header.css"
 
-const TodoHeader = (props) => {
+const TodoHeader = ({headerClass, newTaskClass, placeholder}) => {
     return (
-        <header className="header">
+        <header className={ headerClass }>
             <h1>todos</h1>
-            <NewTaskForm className="new-todo" placeholder="What needs to be done?" autoFocus />
+            <NewTaskForm className={ newTaskClass } placeholder={ placeholder } autoFocus />
         </header>
     )
 }
