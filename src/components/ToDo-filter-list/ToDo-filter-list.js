@@ -1,6 +1,5 @@
 import React from "react";
 
-import TodoButton from "../todo-button";
 import "./todo-filter-list.css"
 
 
@@ -8,10 +7,10 @@ import "./todo-filter-list.css"
 function TodoFilterList({className, filterButtonProps}) {
 
     const liItem = filterButtonProps.map(prop => {
-        const { id, ...otherProps} = prop;
+        const { id, className, label} = prop;
         return (
             <li key={id}>
-                <TodoButton {...otherProps} />
+                <button className={ className } > { label } </button> 
             </li>
         )
     });

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {StrictMode} from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './components/App';
 import './index.css'
 const container = document.getElementById('app')
 const root = createRoot(container);
 
-root.render(<App tab="home" />, );
+root.render(
+    <StrictMode>
+        <App tab="home" />
+    </StrictMode>
+);

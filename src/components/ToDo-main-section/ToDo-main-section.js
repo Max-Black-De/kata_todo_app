@@ -11,12 +11,17 @@ function TodoMainSection(props) {
         <section className={ props.mainSectionClass }>
             <TodoList
                 itemsData={props.itemsData}
+                onDeleteItem={props.onDeleteItem}
+                onChangeItem={props.onChangeItem}
                 listClassName={props.todoListClass}
-                todoListSpanProps={props.todoListSpanProps}
-                todoListButtonProps={props.todoListButtonProps}/>
+                editBtnClass={props.editBtnClass}
+                destroyBtnClass={props.destroyBtnClass}
+                creatingTimeSpanProps={props.creatingTimeSpanProps}/>
             <TodoFooter
-                className={props.todoFooterClass}
+                todoFooterClass={props.todoFooterClass}
                 filterButtonProps={props.filterButtonProps}
+                footerSpanClassName={props.footerSpanClassName}
+                footerSpanCounter={props.footerSpanCounter}
                 footerButtonProps={props.footerButtonProps}
                 filterListClassName={props.filterListClassName}/>
         </section>

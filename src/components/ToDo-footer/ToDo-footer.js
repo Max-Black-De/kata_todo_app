@@ -7,8 +7,8 @@ import "./todo-footer.css"
 
 function TodoFooter(props) { 
     return (
-    <footer className={props.className}>
-        <span className="todo-count">1 items left</span>
+    <footer className={props.todoFooterClass}>
+        <span className={props.footerSpanClassName}>{props.footerSpanCounter} items left</span>
         <TodoFilterList
                     className={props.filterListClassName}
                     filterButtonProps={props.filterButtonProps}/>

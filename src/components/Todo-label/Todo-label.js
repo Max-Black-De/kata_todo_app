@@ -2,16 +2,15 @@ import React from 'react';
 
 import "./todo-label.css"
 
-function TodoLabel(props) {
-
-    const todoSpan = props.todoListSpanProps.map(spanData => {
-        const {id, className, label } = spanData;
-        return <span key={id} className={ className }>{ label }</span>;
-    });
-
+function TodoLabel({ taskProps, creatingTimeSpanProps }) {
+    
+    const { taskClassName, label } = taskProps;
+    const {creatingTimeClassName, creatingTimeLabel } = creatingTimeSpanProps;
+    
     return(
         <label>
-            { todoSpan }
+            <span className={ taskClassName }>{ label }</span>
+            <span className={ creatingTimeClassName }>{ creatingTimeLabel }</span>
         </label>
     )
 };
