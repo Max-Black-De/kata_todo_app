@@ -16,11 +16,13 @@ export default class TodoListItem extends Component {
     
     submitHandler = (event) => {
         event.preventDefault()
-        this.props.editItem(this.state.editedItem, this.props.id)
+        if(event.target[0].value){
+            this.props.editItem(this.state.editedItem, this.props.id)
+            this.setState({
+                editedItem: ''
+            });
+        };
         this.props.addItemClass()
-        this.setState({
-            editedItem: ''
-        });
     };
 
     render() {
@@ -58,7 +60,7 @@ export default class TodoListItem extends Component {
                     type="text"
                     className="edit"
                     onChange={ this.editTaskValue }
-                    value={'Hello'}
+                    // value={'Hello'}
                     />
             </form>
         </li>
