@@ -5,55 +5,48 @@ import './todo-list-item.css'
 export default class TodoListItem extends Component {
 
     state = {
-        checked: false,
-        editing: false,
-    }
+        editedItem: ""
+    };
 
-    changeHandler = () => {
-        this.setState(({ checked }) => {
-            return {
-                checked: !checked
-            }
+    editTaskValue = (event) => {
+        this.setState({
+            editedItem: event.target.value
         });
     };
-    changeClassHandle = () => {
-        this.setState(({ editing }) => {
-            return {
-                editing: !editing
-            }
-        })
-    };
+    
     submitHandler = (event) => {
         event.preventDefault()
-        this.props.onChangeItem(event, this.props.id)
-        this.changeClassHandle()
+        this.props.editItem(this.state.editedItem, this.props.id)
+        this.props.addItemClass()
+        this.setState({
+            editedItem: ''
+        });
     };
 
     render() {
-        const { itemClassName } = this.props;
-        const { checked, editing } = this.state;
-        
-        let addedClass = itemClassName
-        if(checked) {
-            addedClass += ' completed';
-        }
-        if(editing) {
-            addedClass += ' editing';
-        }
+    const { itemClassName } = this.props;
+    const { done, editing } = this.props.taskProps;
+    let addedClass = itemClassName;
+    if(done) {
+        addedClass += ' completed';
+    }
+    if(editing) {
+        addedClass += ' editing';
+    }
 
-        return (
+    return (
         <li className={ addedClass }>
             <div className="view">
                 <input
                     type="checkbox"
                     className="toggle"
-                    onChange = { this.changeHandler }/>
+                    onChange = { this.props.onDoneItem }/>
                 <TodoLabel
                     taskProps={ this.props.taskProps }
                     creatingTimeSpanProps={ this.props.creatingTimeSpanProps }
                     />
                 <button
-                    onClick={ this.changeClassHandle }
+                    onClick={ this.props.addItemClass }
                     className={ this.props.editBtnClass } ></button>
                 <button
                     onClick={ this.props.onDeleteItem }
@@ -64,9 +57,14 @@ export default class TodoListItem extends Component {
                     autoFocus
                     type="text"
                     className="edit"
-                    placeholder="Editing task"/>
+                    onChange={ this.editTaskValue }
+                    value={'Hello'}
+                    />
             </form>
         </li>
-    )
+    );
+
+
     }
+    
 };

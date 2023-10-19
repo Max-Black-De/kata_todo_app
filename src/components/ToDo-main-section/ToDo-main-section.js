@@ -1,6 +1,6 @@
 import React from "react";
 
-import TodoList from "../todo-task-list";
+import TodoList from "../todo-list";
 import TodoFooter from "../todo-footer";
 
 import "./todo-main-section.css"
@@ -12,7 +12,9 @@ function TodoMainSection(props) {
             <TodoList
                 itemsData={props.itemsData}
                 onDeleteItem={props.onDeleteItem}
-                onChangeItem={props.onChangeItem}
+                editItem={props.editItem}
+                addItemClass={props.addItemClass}
+                onDoneItem={props.onDoneItem}
                 listClassName={props.todoListClass}
                 editBtnClass={props.editBtnClass}
                 destroyBtnClass={props.destroyBtnClass}

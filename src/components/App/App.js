@@ -9,7 +9,7 @@ export default class App extends Component {
 
     keysId = 777;
 
-    state ={
+    state = {
         todoListItemsData: [
             // this.createItem('Drink coffee'),
             // this.createItem('Have a lunch'),
@@ -39,13 +39,12 @@ export default class App extends Component {
             itemClassName: "created",
             id: `${ this.keysId++ }`,
             taskClassName: "description",
-            label
+            label,
+            done: false,
+            editing: false
         }
     };
-    addNewTaskHandler = (event) => {
-        event.preventDefault();
-        const label = event.target[0].value
-        event.target[0].value = ''
+    addNewTas = (label) => {
         const newItem = this.createItem(label)
         this.setState(({todoListItemsData}) => {
             return{
@@ -56,40 +55,71 @@ export default class App extends Component {
             }
         });
     };
-    editItemHandler = (event, id) => {
-        event.preventDefault();
-        const value = event.target[0].value
+    editItem = (value, id) => {
         this.setState(({todoListItemsData}) => {
             const idx = todoListItemsData.findIndex(todo => todo.id === id);
             const oldItem = todoListItemsData[idx];
             const editedItem = {...oldItem, label: value};
-            const newItemsArray = [
-                ...todoListItemsData.slice(0, idx),
-                editedItem,
-                ...todoListItemsData.slice(idx + 1)
-            ];
+            
             return {
-                todoListItemsData: newItemsArray
+                todoListItemsData: [
+                    ...todoListItemsData.slice(0, idx),
+                    editedItem,
+                    ...todoListItemsData.slice(idx + 1)
+                ]
             }
         });
     };
-    deleteItemHandles = (id) => {
+    deleteItem = (id) => {
         this.setState(({todoListItemsData}) => {
             const idx = todoListItemsData.findIndex(todo => todo.id === id);
             
             return {
-                todoListItemsData: [...todoListItemsData.slice(0, idx), ...todoListItemsData.slice(idx+1)],
+                todoListItemsData: [
+                    ...todoListItemsData.slice(0, idx),
+                    ...todoListItemsData.slice(idx+1)
+                ]
             }
         })
+    };
+    toggleProperty = (id, arr, propName) => {
+            const idx = arr.findIndex(todo => todo.id === id);
+            const oldItem = arr[idx];
+            const editedItem = {
+                        ...oldItem,
+                        [propName]: !oldItem[propName]
+                    };
+            
+            return [
+                    ...arr.slice(0, idx),
+                    editedItem,
+                    ...arr.slice(idx+1)
+                ]
+    };
+    onToggleDone = (id) => {
+        this.setState(({todoListItemsData}) => {
+            return {
+                todoListItemsData: this.toggleProperty(id, todoListItemsData, 'done')
+            } 
+        });
+    };
+    onToggleEditing = (id) => {
+        this.setState(({todoListItemsData}) => {
+
+            return {
+                todoListItemsData: this.toggleProperty(id, todoListItemsData, 'editing')
+            }
+        });
     };
 
 
     render() {
 
+        const countDone = this.state.todoListItemsData.filter(el => !el.done).length;
         return (
         <section className="todoapp">
             <ToDoHeader
-                    newTaskCreator={this.addNewTaskHandler}
+                    newTaskCreator={this.addNewTas}
                     headerClass="header"
                     newTaskClass="new-todo"
                     placeholder="What needs to be done?"/>
@@ -101,11 +131,13 @@ export default class App extends Component {
                     filterListClassName="filters"
                     editBtnClass={"icon icon-edit"}
                     destroyBtnClass={"icon icon-destroy"}
-                    onChangeItem={ this.editItemHandler }
-                    onDeleteItem={ this.deleteItemHandles}
+                    editItem={ this.editItem }
+                    onDeleteItem={ this.deleteItem}
+                    onDoneItem={this.onToggleDone}
+                    addItemClass={this.onToggleEditing}
                     itemsData={this.state.todoListItemsData}
                     footerSpanClassName={'todo-count'}
-                    footerSpanCounter={ this.state.todoListItemsData.length }
+                    footerSpanCounter={ countDone }
                     footerButtonProps={this.state.footerButtonProps}
                     filterButtonProps={this.state.filterButtonProps}
                     creatingTimeSpanProps={this.state.todoListSpanProps}/>
