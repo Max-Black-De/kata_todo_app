@@ -2,20 +2,18 @@ import React from "react";
 
 import "./todo-filter-list.css"
 
-
-
-function TodoFilterList({className}) {
+function TodoFilterList({className, sortTasks}) {
 
     let filterId = 111
     const filterLabels = ["All", "Active", "Completed"]
     const button = filterLabels.map(label => {
-        return (
+        return( 
             <li key={filterId++}>
-                <button 
-                    className="selected"
-                    onClick={(e) => {console.log(e.target)}}> { label } </button> 
-            </li>
-        )
+                <button
+                    // className={selected}
+                    onClick={(e) => sortTasks(e.target.innerText)}> { label } </button> 
+            </li>)
+        
     });
 
     return (

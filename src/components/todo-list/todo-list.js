@@ -5,7 +5,6 @@ import "./todo-list.css"
 
 const TodoList = (props) => {
     const {editItem, tasksData, onDoneItem, addItemClass, onDeleteItem} = props;
-
     return (
         <ul className="todo-list">
             {tasksData.map((taskData) => (

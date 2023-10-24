@@ -11,13 +11,7 @@ export default class App extends Component {
     keysId = 777;
 
     state = {
-        tasks: [
-            // this.createItem('Drink coffee'),
-            // this.createItem('Have a lunch'),
-            // this.createItem('Make an awesome app'),
-            // this.createItem('Read book'),
-            // this.createItem('Get an awesome offer')
-        ],
+        tasks: [],
         filter: "active"
     };
     createItem = (label) => {
@@ -97,12 +91,28 @@ export default class App extends Component {
     };
     clearCompleted = () => {
         this.setState(({tasks}) => {
-
             return {
                     tasks: tasks.filter(t => (!t.done))
             }
         });
     };
+    getTasks = () => {
+        const {tasks, filter} = this.state;
+        if(filter === 'Active'){
+            return tasks.filter(t => (!t.done));
+        };
+        if(filter === 'Completed'){
+            return tasks.filter(t => (t.done));
+        };
+        return tasks;
+    };
+    sortTasks = (status) => {
+        this.setState(() => {
+            return {
+                filter: status
+            };
+        });
+    }
 
 
     render() {
@@ -119,13 +129,14 @@ export default class App extends Component {
             </header>
             <section className="main">
                 <TodoList
-                    tasksData={this.state.tasks}
+                    tasksData={this.getTasks()}
                     onDeleteItem={this.deleteItem}
                     editItem={this.editItem}
                     addItemClass={this.onToggleEditing}
                     onDoneItem={this.onToggleDone}/>
                 <TodoFooter
                     clearCompleted={this.clearCompleted}
+                    sortTasks={this.sortTasks}
                     footerSpanCounter={countDone}/>
             </section>
         </section>
