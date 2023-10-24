@@ -4,28 +4,19 @@ import TodoListItem from "../todo-list-item";
 import "./todo-list.css"
 
 const TodoList = (props) => {
-    const item = props.itemsData.map((itemData) => {
-        const { id, itemClassName, ...taskProps } = itemData
-        return (
-            <TodoListItem
-                        id={ id }
-                        key={ id }
-                        itemClassName={itemClassName}
-                        taskProps={taskProps}
-                        editBtnClass={props.editBtnClass}
-                        destroyBtnClass={props.destroyBtnClass}
-                        onDoneItem={ () => {props.onDoneItem(id)}}
-                        addItemClass={ () => {props.addItemClass(id)}}
-                        editItem={props.editItem}
-                        onDeleteItem={ () => {props.onDeleteItem(id)} }
-                        creatingTimeSpanProps={props.creatingTimeSpanProps}/>
-        );
-    });
-
+    const {editItem, tasksData, onDoneItem, addItemClass, onDeleteItem} = props;
 
     return (
-        <ul className={props.listClassName}>
-            { item }
+        <ul className="todo-list">
+            {tasksData.map((taskData) => (
+                    <TodoListItem
+                        key={taskData.id}
+                        {...taskData}
+                        editItem={(value) => {editItem(value, taskData.id)}}
+                        onDoneItem={ () => {onDoneItem(taskData.id)}}
+                        addItemClass={ () => {addItemClass(taskData.id)}}
+                        onDeleteItem={ () => {onDeleteItem(taskData.id)}}/>
+                ))}
         </ul>
     );
 };

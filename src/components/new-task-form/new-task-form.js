@@ -4,21 +4,12 @@ import "./new-task-form.css"
 
 export default class NewTaskForm extends Component {
 
-    state = {
-        newTaskItem: ""
-    };
-    createTask = (event) => {
-        this.setState({
-            newTaskItem: event.target.value,
-        });
-    };
+
     onSubmit = (event) => {
         event.preventDefault();
-        if(event.target[0].value) {
-            this.props.submitNewTask(this.state.newTaskItem);
-            this.setState({
-                newTaskItem: ''
-            })
+        if(event.target.newTask.value.trim() !== '') {
+            this.props.submitNewTask(event.target.newTask.value);
+            event.target.newTask.value = '';
         };
     };
 
@@ -27,14 +18,11 @@ export default class NewTaskForm extends Component {
         <form onSubmit={this.onSubmit}>
             <input
                 autoFocus
-                onChange={(event) => {this.createTask(event)}}
+                name="newTask"
                 className={this.props.className}
                 placeholder={this.props.placeholder}
-                value={this.state.newTaskItem}
             />
         </form>
     );
     }
-
-    
 };

@@ -4,20 +4,23 @@ import "./todo-filter-list.css"
 
 
 
-function TodoFilterList({className, filterButtonProps}) {
+function TodoFilterList({className}) {
 
-    const liItem = filterButtonProps.map(prop => {
-        const { id, className, label} = prop;
+    let filterId = 111
+    const filterLabels = ["All", "Active", "Completed"]
+    const button = filterLabels.map(label => {
         return (
-            <li key={id}>
-                <button className={ className } > { label } </button> 
+            <li key={filterId++}>
+                <button 
+                    className="selected"
+                    onClick={(e) => {console.log(e.target)}}> { label } </button> 
             </li>
         )
     });
 
     return (
         <ul className={className}>
-            { liItem }
+            {button}
         </ul>
     )
 };

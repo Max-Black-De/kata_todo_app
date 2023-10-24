@@ -1,72 +1,59 @@
 import React, {Component} from 'react';
-import TodoLabel from '../todo-label';
 
 import './todo-list-item.css'
 export default class TodoListItem extends Component {
 
-    state = {
-        editedItem: ""
-    };
-
-    editTaskValue = (event) => {
-        this.setState({
-            editedItem: event.target.value
-        });
-    };
-    
     submitHandler = (event) => {
         event.preventDefault()
-        if(event.target[0].value){
-            this.props.editItem(this.state.editedItem, this.props.id)
-            this.setState({
-                editedItem: ''
-            });
-        };
-        this.props.addItemClass()
+        if(event.target.editedTask.value.trim() !== '') {
+            this.props.editItem(event.target.editedTask.value);
+        }
+        // else { this.props.editItem(event.target.editedTask.value);}
+        this.props.addItemClass() // вызываем функцию изменения класса кнопки edit
     };
-
+    onHandleClick = () => {
+        this.props.addItemClass() // вызываем функцию изменения класса кнопки edit
+    };
+    
     render() {
-    const { itemClassName } = this.props;
-    const { done, editing } = this.props.taskProps;
-    let addedClass = itemClassName;
-    if(done) {
-        addedClass += ' completed';
-    }
-    if(editing) {
-        addedClass += ' editing';
-    }
+        const { label, done, editing, onDoneItem, onDeleteItem } = this.props;
+        let liClassName = 'newTask';
+        if(done) {
+            liClassName += ' completed';
+        }
+        if(editing) {
+            liClassName += ' editing';
+        }
 
-    return (
-        <li className={ addedClass }>
-            <div className="view">
-                <input
-                    type="checkbox"
-                    className="toggle"
-                    onChange = { this.props.onDoneItem }/>
-                <TodoLabel
-                    taskProps={ this.props.taskProps }
-                    creatingTimeSpanProps={ this.props.creatingTimeSpanProps }
-                    />
-                <button
-                    onClick={ this.props.addItemClass }
-                    className={ this.props.editBtnClass } ></button>
-                <button
-                    onClick={ this.props.onDeleteItem }
-                    className={ this.props.destroyBtnClass } ></button>
-            </div>
-            <form onSubmit={ this.submitHandler }>
-                <input
-                    autoFocus
-                    type="text"
-                    className="edit"
-                    onChange={ this.editTaskValue }
-                    // value={'Hello'}
-                    />
-            </form>
-        </li>
-    );
+        return (
+            <li className={liClassName}>
+                <div className="view">
+                    <input
+                        type="checkbox"
+                        className="toggle"
+                        onChange = {onDoneItem}/>
 
-
+                    <label>
+                        <span className="description">{ label }</span>
+                        <span className="created">{ "created 17 seconds ago" }</span>
+                    </label>
+                    <button
+                        onClick={ this.onHandleClick }
+                        className="icon icon-edit"></button>
+                    <button
+                        onClick={onDeleteItem}
+                        className="icon icon-destroy"></button>
+                </div>
+                <form onSubmit={this.submitHandler}>
+                    <input
+                        type="text"
+                        className="edit"
+                        name="editedTask"
+                        defaultValue={label}
+                        contentEditable='true'/>
+                </form>
+            </li>
+        );
     }
     
 };
