@@ -21,11 +21,8 @@ function TodoList({editItem, tasksData, onDoneItem, addItemClass, onDeleteItem})
 };
 
 TodoList.propTypes = {
-    editItem: PropTypes.array.isRequired,
-    tasksData: PropTypes.func.isRequired,
-    onDoneItem: PropTypes.func.isRequired,
-    addItemClass: PropTypes.func.isRequired,
-    onDeleteItem: PropTypes.func.isRequired
+    editItem: PropTypes.func.isRequired,
+    tasksData: PropTypes.array.isRequired,
 };
 
 export default TodoList;

@@ -4,18 +4,19 @@ import { PropTypes } from 'prop-types';
 
 import './todo-list-item.css'
 
-function TodoListItem({label, done, editing, onDoneItem, onDeleteItem, date}){
+const TodoListItem = (props) => {
     const submitHandler = (event) => {
         event.preventDefault()
         if(event.target.editedTask.value.trim() !== '') {
-            this.props.editItem(event.target.editedTask.value);
+            props.editItem(event.target.editedTask.value);
         }
-        this.props.addItemClass() // вызываем функцию изменения класса кнопки edit
+        props.addItemClass() // вызываем функцию изменения класса кнопки edit
     };
     const onHandleClick = () => {
-        this.props.addItemClass() // вызываем функцию изменения класса кнопки edit
+        props.addItemClass() // вызываем функцию изменения класса кнопки edit
     };
-
+    
+    const { label, done, editing, onDoneItem, onDeleteItem, date } = props;
     let liClassName = 'newTask';
     if(done) {
         liClassName += ' completed';
@@ -63,7 +64,9 @@ TodoListItem.propTypes = {
     label: PropTypes.string.isRequired,
     done: PropTypes.bool,
     editing: PropTypes.bool,
+    editItem: PropTypes.func.isRequired,
     onDoneItem: PropTypes.func.isRequired,
+    addItemClass: PropTypes.func.isRequired,
     onDeleteItem: PropTypes.func.isRequired,
     date: PropTypes.instanceOf(Date).isRequired,
 };

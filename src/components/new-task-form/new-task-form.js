@@ -25,7 +25,7 @@ function NewTaskForm({className, placeholder, submitNewTask}){
 
 NewTaskForm.propTypes = {
     className: PropTypes.string.isRequired,
-    placeholder: PropTypes.func.isRequired,
+    placeholder: PropTypes.string.isRequired,
     submitNewTask: PropTypes.func.isRequired
 };
 
