@@ -1,28 +1,32 @@
-import React, {Component} from "react";
+import React from "react";
+import { PropTypes } from 'prop-types';
 
 import "./new-task-form.css"
 
-export default class NewTaskForm extends Component {
-
-
-    onSubmit = (event) => {
+function NewTaskForm({className, placeholder, submitNewTask}){
+    const onSubmit = (event) => {
         event.preventDefault();
         if(event.target.newTask.value.trim() !== '') {
-            this.props.submitNewTask(event.target.newTask.value);
+            submitNewTask(event.target.newTask.value);
             event.target.newTask.value = '';
         };
     };
-
-    render () {
         return (
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={onSubmit}>
             <input
                 autoFocus
                 name="newTask"
-                className={this.props.className}
-                placeholder={this.props.placeholder}
+                className={className}
+                placeholder={placeholder}
             />
         </form>
     );
-    }
 };
+
+NewTaskForm.propTypes = {
+    className: PropTypes.string.isRequired,
+    placeholder: PropTypes.func.isRequired,
+    submitNewTask: PropTypes.func.isRequired
+};
+
+export default  NewTaskForm;

@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from 'prop-types';
 
 import "./todo-filter-list.css"
 
@@ -21,6 +22,15 @@ function TodoFilterList({className, sortTasks, currentStatus}) {
             {button}
         </ul>
     )
+};
+TodoFilterList.propDefault = {
+    currentStatus: 'active'
+};
+
+TodoFilterList.propTypes = {
+    className: PropTypes.string.isRequired,
+    sortTasks: PropTypes.func.isRequired,
+    currentStatus: PropTypes.string
 };
 
 export default TodoFilterList;

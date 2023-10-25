@@ -1,10 +1,10 @@
 import React from "react";
 import TodoListItem from "../todo-list-item";
+import { PropTypes } from 'prop-types';
 
 import "./todo-list.css"
 
-const TodoList = (props) => {
-    const {editItem, tasksData, onDoneItem, addItemClass, onDeleteItem} = props;
+function TodoList({editItem, tasksData, onDoneItem, addItemClass, onDeleteItem}){
     return (
         <ul className="todo-list">
             {tasksData.map((taskData) => (
@@ -18,6 +18,14 @@ const TodoList = (props) => {
                 ))}
         </ul>
     );
+};
+
+TodoList.propTypes = {
+    editItem: PropTypes.array.isRequired,
+    tasksData: PropTypes.func.isRequired,
+    onDoneItem: PropTypes.func.isRequired,
+    addItemClass: PropTypes.func.isRequired,
+    onDeleteItem: PropTypes.func.isRequired
 };
 
 export default TodoList;

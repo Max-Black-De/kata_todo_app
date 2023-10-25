@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from 'prop-types';
 
 import TodoFilterList from "../todo-filter-list";
 
@@ -17,5 +18,10 @@ function TodoFooter({footerSpanCounter, clearCompleted, sortTasks, currentStatus
     </footer>
     );
 };
+
+TodoFooter.propTypes = {
+    footerSpanCounter: PropTypes.number.isRequired,
+    clearCompleted: PropTypes.func.isRequired
+}
 
 export default TodoFooter;
