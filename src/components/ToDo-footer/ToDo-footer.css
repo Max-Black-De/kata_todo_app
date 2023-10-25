@@ -36,3 +36,6 @@ footer .clear-completed, html .clear-completed:active {
     text-decoration: none;
     cursor: pointer;
 }
+.clear-completed:hover {
+	text-decoration: underline;
+}

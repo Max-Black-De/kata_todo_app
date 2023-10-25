@@ -12,14 +12,15 @@ export default class App extends Component {
 
     state = {
         tasks: [],
-        filter: "active"
+        status: "active"
     };
     createItem = (label) => {
             return {
                         label,
                         id: this.keysId++,
                         done: false,
-                        editing: false
+                        editing: false,
+                        date: new Date()
                     }
     };
     addNewTask = (label) => {
@@ -97,11 +98,11 @@ export default class App extends Component {
         });
     };
     getTasks = () => {
-        const {tasks, filter} = this.state;
-        if(filter === 'Active'){
+        const {tasks, status} = this.state;
+        if(status === 'Active'){
             return tasks.filter(t => (!t.done));
         };
-        if(filter === 'Completed'){
+        if(status === 'Completed'){
             return tasks.filter(t => (t.done));
         };
         return tasks;
@@ -109,7 +110,7 @@ export default class App extends Component {
     sortTasks = (status) => {
         this.setState(() => {
             return {
-                filter: status
+                status: status
             };
         });
     }
@@ -135,6 +136,7 @@ export default class App extends Component {
                     addItemClass={this.onToggleEditing}
                     onDoneItem={this.onToggleDone}/>
                 <TodoFooter
+                    currentStatus={this.state.status}
                     clearCompleted={this.clearCompleted}
                     sortTasks={this.sortTasks}
                     footerSpanCounter={countDone}/>

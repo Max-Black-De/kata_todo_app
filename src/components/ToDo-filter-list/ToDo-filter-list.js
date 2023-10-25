@@ -2,7 +2,7 @@ import React from "react";
 
 import "./todo-filter-list.css"
 
-function TodoFilterList({className, sortTasks}) {
+function TodoFilterList({className, sortTasks, currentStatus}) {
 
     let filterId = 111
     const filterLabels = ["All", "Active", "Completed"]
@@ -10,7 +10,7 @@ function TodoFilterList({className, sortTasks}) {
         return( 
             <li key={filterId++}>
                 <button
-                    // className={selected}
+                    className={currentStatus === label ? "selected" : ""}
                     onClick={(e) => sortTasks(e.target.innerText)}> { label } </button> 
             </li>)
         

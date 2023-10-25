@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { formatDistanceToNow } from 'date-fns';
 
 import './todo-list-item.css'
 export default class TodoListItem extends Component {
@@ -8,7 +9,6 @@ export default class TodoListItem extends Component {
         if(event.target.editedTask.value.trim() !== '') {
             this.props.editItem(event.target.editedTask.value);
         }
-        // else { this.props.editItem(event.target.editedTask.value);}
         this.props.addItemClass() // вызываем функцию изменения класса кнопки edit
     };
     onHandleClick = () => {
@@ -16,7 +16,7 @@ export default class TodoListItem extends Component {
     };
     
     render() {
-        const { label, done, editing, onDoneItem, onDeleteItem } = this.props;
+        const { label, done, editing, onDoneItem, onDeleteItem, date } = this.props;
         let liClassName = 'newTask';
         if(done) {
             liClassName += ' completed';
@@ -35,7 +35,7 @@ export default class TodoListItem extends Component {
 
                     <label>
                         <span className="description">{ label }</span>
-                        <span className="created">{ "created 17 seconds ago" }</span>
+                        <span className="created">{ `Created ${formatDistanceToNow(date, {includeSeconds: true}, {addSuffix: true})}` }</span>
                     </label>
                     <button
                         onClick={ this.onHandleClick }
