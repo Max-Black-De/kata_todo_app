@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react'
 
 import NewTaskForm from '../new-task-form'
@@ -102,7 +102,6 @@ export default class App extends Component {
   }
 
   render() {
-    const tempVar = 5
     const { tasks, status } = this.state
     const countDone = tasks.filter((el) => !el.done).length
     return (
