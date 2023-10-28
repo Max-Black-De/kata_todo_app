@@ -16,7 +16,7 @@ function TodoListItem(props) {
     addItemClass() // вызываем функцию изменения класса кнопки edit
   }
   const onHandleClick = () => {
-    addItemClass() // вызываем функцию изменения класса кнопки edit
+    addItemClass()
   }
 
   const { label, done, editing, onDoneItem, onDeleteItem, date } = props
