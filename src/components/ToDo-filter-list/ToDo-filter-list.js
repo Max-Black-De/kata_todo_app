@@ -15,8 +15,7 @@ function TodoFilterList({ sortTasks, currentStatus }) {
         className={currentStatus === label ? 'selected' : ''}
         onClick={(e) => sortTasks(e.target.innerText)}
       >
-        {' '}
-        {label}{' '}
+        {label}
       </button>
     </li>
   ))
