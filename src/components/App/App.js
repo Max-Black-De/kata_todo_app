@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react'
 
 import NewTaskForm from '../new-task-form'
@@ -9,17 +8,6 @@ import TodoFooter from '../todo-footer'
 import './App.css'
 
 export default class App extends Component {
-  static toggleProperty = (id, arr, propName) => {
-    const idx = arr.findIndex((todo) => todo.id === id)
-    const oldItem = arr[idx]
-    const editedItem = {
-      ...oldItem,
-      [propName]: !oldItem[propName],
-    }
-
-    return [...arr.slice(0, idx), editedItem, ...arr.slice(idx + 1)]
-  }
-
   keysId = 777
 
   // eslint-disable-next-line react/state-in-constructor
@@ -38,7 +26,6 @@ export default class App extends Component {
   })
 
   addNewTask = (label) => {
-    // console.log(label)
     const newItem = this.createItem(label)
     this.setState(({ tasks }) => ({
       tasks: [...tasks, newItem],
@@ -65,6 +52,18 @@ export default class App extends Component {
         tasks: [...tasks.slice(0, idx), ...tasks.slice(idx + 1)],
       }
     })
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  toggleProperty = (id, arr, propName) => {
+    const idx = arr.findIndex((todo) => todo.id === id)
+    const oldItem = arr[idx]
+    const editedItem = {
+      ...oldItem,
+      [propName]: !oldItem[propName],
+    }
+
+    return [...arr.slice(0, idx), editedItem, ...arr.slice(idx + 1)]
   }
 
   onToggleDone = (id) => {
@@ -103,7 +102,8 @@ export default class App extends Component {
   }
 
   render() {
-    const countDone = this.state.tasks.filter((el) => !el.done).length
+    const { tasks, status } = this.state
+    const countDone = tasks.filter((el) => !el.done).length
     return (
       <section className="todoapp">
         <header className="header">
@@ -119,7 +119,7 @@ export default class App extends Component {
             onDoneItem={this.onToggleDone}
           />
           <TodoFooter
-            currentStatus={this.state.status}
+            currentStatus={status}
             clearCompleted={this.clearCompleted}
             sortTasks={this.sortTasks}
             footerSpanCounter={countDone}

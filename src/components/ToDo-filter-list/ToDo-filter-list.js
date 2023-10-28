@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { PropTypes } from 'prop-types'
@@ -8,7 +9,6 @@ function TodoFilterList({ sortTasks, currentStatus }) {
   let filterId = 111
   const filterLabels = ['All', 'Active', 'Completed']
   const button = filterLabels.map((label) => (
-    // eslint-disable-next-line no-plusplus
     <li key={filterId++}>
       <button
         type="button"

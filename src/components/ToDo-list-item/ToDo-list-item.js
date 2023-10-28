@@ -1,13 +1,14 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { formatDistanceToNow } from 'date-fns'
 import { PropTypes } from 'prop-types'
 
 import './todo-list-item.css'
 
-function TodoListItem(props, { editItem, addItemClass }) {
+function TodoListItem(props) {
+  const { editItem, addItemClass } = props
   const submitHandler = (event) => {
     event.preventDefault()
     if (event.target.editedTask.value.trim() !== '') {
