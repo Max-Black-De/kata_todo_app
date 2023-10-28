@@ -102,6 +102,7 @@ export default class App extends Component {
   }
 
   render() {
+    const newVar = 4
     const { tasks, status } = this.state
     const countDone = tasks.filter((el) => !el.done).length
     return (
