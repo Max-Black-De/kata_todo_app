@@ -1,13 +1,14 @@
-import {StrictMode} from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './components/App';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+
+import App from './components/App'
 import './index.css'
 
 const container = document.getElementById('app')
-const root = createRoot(container);
+const root = createRoot(container)
 
 root.render(
-    <StrictMode>
-        <App tab="home" />
-    </StrictMode>
-);
+  <StrictMode>
+    <App tab="home" />
+  </StrictMode>
+)

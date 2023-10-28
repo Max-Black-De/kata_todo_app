@@ -1,33 +1,35 @@
-import { PropTypes } from 'prop-types';
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import { PropTypes } from 'prop-types'
 
 import './todo-filter-list.css'
 
-function TodoFilterList({sortTasks, currentStatus}) {
+function TodoFilterList({ sortTasks, currentStatus }) {
+  let filterId = 111
+  const filterLabels = ['All', 'Active', 'Completed']
+  const button = filterLabels.map((label) => (
+    // eslint-disable-next-line no-plusplus
+    <li key={filterId++}>
+      <button
+        type="button"
+        className={currentStatus === label ? 'selected' : ''}
+        onClick={(e) => sortTasks(e.target.innerText)}
+      >
+        {' '}
+        {label}{' '}
+      </button>
+    </li>
+  ))
 
-    let filterId = 111
-    const filterLabels = ['All', 'Active', 'Completed']
-    const button = filterLabels.map(label => ( 
-            // eslint-disable-next-line no-plusplus
-            <li key={filterId++}>
-                <button
-                    type='button'
-                    className={currentStatus === label ? 'selected' : ''}
-                    onClick={(e) => sortTasks(e.target.innerText)}> { label } </button> 
-            </li>));
-
-    return (
-        <ul className="filters">
-            {button}
-        </ul>
-    )
-};
+  return <ul className="filters">{button}</ul>
+}
 TodoFilterList.propDefault = {
-    currentStatus: 'active'
-};
-
-TodoFilterList.propTypes = {
-    sortTasks: PropTypes.func.isRequired,
-    currentStatus: PropTypes.oneOf([ 'active', 'All', 'Active', 'Completed']).isRequired
+  currentStatus: 'active',
 }
 
-export default TodoFilterList;
+TodoFilterList.propTypes = {
+  sortTasks: PropTypes.func.isRequired,
+  currentStatus: PropTypes.oneOf(['active', 'All', 'Active', 'Completed']).isRequired,
+}
+
+export default TodoFilterList

@@ -1,31 +1,43 @@
-import { PropTypes } from 'prop-types';
-import TodoListItem from "../todo-list-item";
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import { PropTypes } from 'prop-types'
 
-import "./todo-list.css"
+import TodoListItem from '../todo-list-item'
 
-function TodoList({editItem, tasksData, onDoneItem, addItemClass, onDeleteItem}){
-    return (
-        <ul className="todo-list">
-            {tasksData.map((taskData) => (
-                    <TodoListItem
-                        key={taskData.id}
-                        // eslint-disable-next-line react/jsx-props-no-spreading
-                        {...taskData}
-                        editItem={(value) => {editItem(value, taskData.id)}}
-                        onDoneItem={ () => {onDoneItem(taskData.id)}}
-                        addItemClass={ () => {addItemClass(taskData.id)}}
-                        onDeleteItem={ () => {onDeleteItem(taskData.id)}}/>
-                ))}
-        </ul>
-    );
-};
+import './todo-list.css'
+
+function TodoList({ editItem, tasksData, onDoneItem, addItemClass, onDeleteItem }) {
+  return (
+    <ul className="todo-list">
+      {tasksData.map((taskData) => (
+        <TodoListItem
+          key={taskData.id}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...taskData}
+          editItem={(value) => {
+            editItem(value, taskData.id)
+          }}
+          onDoneItem={() => {
+            onDoneItem(taskData.id)
+          }}
+          addItemClass={() => {
+            addItemClass(taskData.id)
+          }}
+          onDeleteItem={() => {
+            onDeleteItem(taskData.id)
+          }}
+        />
+      ))}
+    </ul>
+  )
+}
 
 TodoList.propTypes = {
-    editItem: PropTypes.func.isRequired,
-    tasksData: PropTypes.arrayOf.isRequired,
-    onDoneItem: PropTypes.func.isRequired,
-    addItemClass: PropTypes.func.isRequired,
-    onDeleteItem: PropTypes.func.isRequired
-};
+  editItem: PropTypes.func.isRequired,
+  // tasksData: PropTypes.arrayOf.isRequired,
+  onDoneItem: PropTypes.func.isRequired,
+  addItemClass: PropTypes.func.isRequired,
+  onDeleteItem: PropTypes.func.isRequired,
+}
 
-export default TodoList;
+export default TodoList

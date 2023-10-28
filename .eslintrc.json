@@ -29,7 +29,13 @@
     ],
     "rules": {
         "indent": ["error", 2],
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "parser": "flow"
+            }
+        ],
         "linebreak-style": [0, "unix"],
         "quotes": ["error", "single"],
         "semi": ["error", "never"],
