@@ -12,7 +12,7 @@ function TodoFooter({ footerSpanCounter, clearCompleted, sortTasks, currentStatu
       <span className="todo-count">{footerSpanCounter} items left</span>
       <TodoFilterList currentStatus={currentStatus} sortTasks={sortTasks} />
       <button type="button" className="clear-completed" onClick={clearCompleted}>
-        Clear completed!
+        Clear completed
       </button>
     </footer>
   )
