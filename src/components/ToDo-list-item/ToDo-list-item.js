@@ -1,19 +1,20 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { formatDistanceToNow } from 'date-fns';
 import { PropTypes } from 'prop-types';
 
 import './todo-list-item.css'
 
-const TodoListItem = (props) => {
+function TodoListItem(props, {editItem, addItemClass}) {
     const submitHandler = (event) => {
         event.preventDefault()
         if(event.target.editedTask.value.trim() !== '') {
-            props.editItem(event.target.editedTask.value);
+            editItem(event.target.editedTask.value);
         }
-        props.addItemClass() // вызываем функцию изменения класса кнопки edit
+        addItemClass() // вызываем функцию изменения класса кнопки edit
     };
     const onHandleClick = () => {
-        props.addItemClass() // вызываем функцию изменения класса кнопки edit
+        addItemClass() // вызываем функцию изменения класса кнопки edit
     };
     
     const { label, done, editing, onDoneItem, onDeleteItem, date } = props;
@@ -32,17 +33,18 @@ const TodoListItem = (props) => {
                     type="checkbox"
                     className="toggle"
                     onChange = {onDoneItem}/>
-
                 <label>
                     <span className="description">{ label }</span>
                     <span className="created">{ `Created ${formatDistanceToNow(date, {includeSeconds: true}, {addSuffix: true})}` }</span>
                 </label>
                 <button
+                    type='button'
                     onClick={ onHandleClick }
-                    className="icon icon-edit"></button>
+                    className="icon icon-edit" />
                 <button
+                    type='button'
                     onClick={onDeleteItem}
-                    className="icon icon-destroy"></button>
+                    className="icon icon-destroy" />
             </div>
             <form onSubmit={submitHandler}>
                 <input
@@ -54,7 +56,7 @@ const TodoListItem = (props) => {
             </form>
         </li>
     );
-};
+}
 
 TodoListItem.defaultProps = {
     done: false,
@@ -64,9 +66,7 @@ TodoListItem.propTypes = {
     label: PropTypes.string.isRequired,
     done: PropTypes.bool,
     editing: PropTypes.bool,
-    editItem: PropTypes.func.isRequired,
     onDoneItem: PropTypes.func.isRequired,
-    addItemClass: PropTypes.func.isRequired,
     onDeleteItem: PropTypes.func.isRequired,
     date: PropTypes.instanceOf(Date).isRequired,
 };

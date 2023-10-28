@@ -1,6 +1,5 @@
-import React from "react";
-import TodoListItem from "../todo-list-item";
 import { PropTypes } from 'prop-types';
+import TodoListItem from "../todo-list-item";
 
 import "./todo-list.css"
 
@@ -10,6 +9,7 @@ function TodoList({editItem, tasksData, onDoneItem, addItemClass, onDeleteItem})
             {tasksData.map((taskData) => (
                     <TodoListItem
                         key={taskData.id}
+                        // eslint-disable-next-line react/jsx-props-no-spreading
                         {...taskData}
                         editItem={(value) => {editItem(value, taskData.id)}}
                         onDoneItem={ () => {onDoneItem(taskData.id)}}
@@ -22,7 +22,10 @@ function TodoList({editItem, tasksData, onDoneItem, addItemClass, onDeleteItem})
 
 TodoList.propTypes = {
     editItem: PropTypes.func.isRequired,
-    tasksData: PropTypes.array.isRequired,
+    tasksData: PropTypes.arrayOf.isRequired,
+    onDoneItem: PropTypes.func.isRequired,
+    addItemClass: PropTypes.func.isRequired,
+    onDeleteItem: PropTypes.func.isRequired
 };
 
 export default TodoList;

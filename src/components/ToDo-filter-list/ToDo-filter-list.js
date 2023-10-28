@@ -1,24 +1,22 @@
-import React from "react";
 import { PropTypes } from 'prop-types';
 
-import "./todo-filter-list.css"
+import './todo-filter-list.css'
 
-function TodoFilterList({className, sortTasks, currentStatus}) {
+function TodoFilterList({sortTasks, currentStatus}) {
 
     let filterId = 111
-    const filterLabels = ["All", "Active", "Completed"]
-    const button = filterLabels.map(label => {
-        return( 
+    const filterLabels = ['All', 'Active', 'Completed']
+    const button = filterLabels.map(label => ( 
+            // eslint-disable-next-line no-plusplus
             <li key={filterId++}>
                 <button
-                    className={currentStatus === label ? "selected" : ""}
+                    type='button'
+                    className={currentStatus === label ? 'selected' : ''}
                     onClick={(e) => sortTasks(e.target.innerText)}> { label } </button> 
-            </li>)
-        
-    });
+            </li>));
 
     return (
-        <ul className={className}>
+        <ul className="filters">
             {button}
         </ul>
     )
@@ -28,9 +26,8 @@ TodoFilterList.propDefault = {
 };
 
 TodoFilterList.propTypes = {
-    className: PropTypes.string.isRequired,
     sortTasks: PropTypes.func.isRequired,
-    currentStatus: PropTypes.string
-};
+    currentStatus: PropTypes.oneOf([ 'active', 'All', 'Active', 'Completed']).isRequired
+}
 
 export default TodoFilterList;

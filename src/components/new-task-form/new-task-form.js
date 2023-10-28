@@ -1,20 +1,19 @@
-import React from "react";
 import { PropTypes } from 'prop-types';
 
 import "./new-task-form.css"
 
 function NewTaskForm({className, placeholder, submitNewTask}){
-    const onSubmit = (event) => {
-        event.preventDefault();
-        if(event.target.newTask.value.trim() !== '') {
-            submitNewTask(event.target.newTask.value);
-            event.target.newTask.value = '';
+    const onSubmit = (e) => {
+        e.preDefault();
+        if(e.target.newTask.value.trim() !== '') {
+            submitNewTask(e.target.newTask.value);
+            e.target.newTask.value = '';
         };
     };
         return (
         <form onSubmit={onSubmit}>
             <input
-                autoFocus
+                // autoFocus
                 name="newTask"
                 className={className}
                 placeholder={placeholder}
