@@ -20,7 +20,7 @@ function TodoListItem(props) {
   }
 
   const { label, done, editing, onDoneItem, onDeleteItem, date } = props
-  let liClassName = 'newTask'
+  let liClassName = 'newTask '
   if (done) {
     liClassName += ' completed'
   }
