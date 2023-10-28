@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react'
 import { formatDistanceToNow } from 'date-fns'
 import { PropTypes } from 'prop-types'

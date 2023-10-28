@@ -10,7 +10,6 @@ import './App.css'
 export default class App extends Component {
   keysId = 777
 
-  // eslint-disable-next-line react/state-in-constructor
   state = {
     tasks: [],
     status: 'active',

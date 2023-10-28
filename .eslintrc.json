@@ -20,22 +20,25 @@
     "parserOptions": {
         "ecmaFeatures": { "jsx": true }, 
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "requireConfigFile": false,
+        "babelOptions": {
+            "babelrc": false,
+            "configFile": false,
+            "presets": ["@babel/preset-env"]
+        }
     },
     "plugins": [
+        "@babel",
         "react",
         "prettier",
         "import"
     ],
     "rules": {
         "indent": ["error", 2],
-        "prettier/prettier": [
-            "error",
-            {
-                "singleQuote": true,
-                "parser": "flow"
-            }
-        ],
+        "react/state-in-constructor": 0,
+        "jsx-a11y/label-has-associated-control": 0,
+        "react/jsx-props-no-spreading": 0, 
         "linebreak-style": [0, "unix"],
         "quotes": ["error", "single"],
         "semi": ["error", "never"],
@@ -43,6 +46,13 @@
         "react/prop-types": 0,
         "import/no-unresolved": [2, { "caseSensitive": false }],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "parser": "flow"
+            }
+        ],
         "import/order": [
             2,
             {
@@ -59,6 +69,7 @@
         ]
     },
     "settings": {
+        "version": "detect",
         "import/resolver": {
             "node": {
             "extensions": [".js", ".jsx", ".ts", ".tsx"],
