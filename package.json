@@ -17,15 +17,15 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "pre-deploy": "npm run build",
-        "deploy": "gh-pages -d build",
         "build": "react-scripts build",
-        "lint": "eslint ./src",
-        "lint:fix": "eslint ./src --fix",
-        "format": "eslint ./src --format",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "prepare": "husky install"
+        "lint": "eslint ./src",
+        "lint:fix": "eslint ./src --fix",
+        "format": "prettier ./src --format",
+        "prepare": "husky install",
+        "pre-deploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
