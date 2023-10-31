@@ -104,27 +104,29 @@ export default class App extends Component {
     const { tasks, status } = this.state
     const countDone = tasks.filter((el) => !el.done).length
     return (
-      <section className="todoapp">
-        <header className="header">
-          <h1>todos2</h1>
-          <NewTaskForm className="new-todo" placeholder="What needs to be done?" submitNewTask={this.addNewTask} />
-        </header>
-        <section className="main">
-          <TodoList
-            tasksData={this.getTasks()}
-            onDeleteItem={this.deleteItem}
-            editItem={this.editItem}
-            addItemClass={this.onToggleEditing}
-            onDoneItem={this.onToggleDone}
-          />
-          <TodoFooter
-            currentStatus={status}
-            clearCompleted={this.clearCompleted}
-            sortTasks={this.sortTasks}
-            footerSpanCounter={countDone}
-          />
+      <div className="app">
+        <section className="todoapp">
+          <header className="header">
+            <h1>todos2</h1>
+            <NewTaskForm className="new-todo" placeholder="What needs to be done?" submitNewTask={this.addNewTask} />
+          </header>
+          <section className="main">
+            <TodoList
+              tasksData={this.getTasks()}
+              onDeleteItem={this.deleteItem}
+              editItem={this.editItem}
+              addItemClass={this.onToggleEditing}
+              onDoneItem={this.onToggleDone}
+            />
+            <TodoFooter
+              currentStatus={status}
+              clearCompleted={this.clearCompleted}
+              sortTasks={this.sortTasks}
+              footerSpanCounter={countDone}
+            />
+          </section>
         </section>
-      </section>
+      </div>
     )
   }
 }
