@@ -1,14 +1,14 @@
-import { StrictMode } from 'react'
+// eslint-disable-next-line no-unused-vars
+import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import App from './components/App'
 import './index.css'
 
-const container = document.getElementById('app')
-const root = createRoot(container)
+const root = createRoot(document.getElementById('app'))
 
 root.render(
   <StrictMode>
-    <App tab="home" />
+    <App />
   </StrictMode>
 )
